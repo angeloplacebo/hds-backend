@@ -1,5 +1,5 @@
 {
-  "name": "cmsti_hds",
+  "name": "hds_backend",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
