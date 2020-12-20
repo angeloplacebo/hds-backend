@@ -1,5 +1,6 @@
 import express from 'express'
 import mongoose from 'mongoose'
+import cors from 'cors'
 
 import * as dotenv from 'dotenv'
 
@@ -16,7 +17,10 @@ const db = mongoose.connection
 db.on('error', (error)=> console.error(error))
 db.once('open', ()=> console.log('Connected to Database'))
 
+const corsOpts = cors()
 const app = express()
+
+app.use(corsOpts)
 
 app.use(express.json())
 
