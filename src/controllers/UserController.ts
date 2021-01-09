@@ -1,5 +1,6 @@
 import { Response, Request } from 'express'
 import bcryptjs from 'bcryptjs'
+import jwt from 'jsonwebtoken'
 
 import userModel from '../models/User'
 import { loginValidation, registerValidation } from '../validation'
@@ -49,7 +50,9 @@ const UserController = {
 
     if (!validPass) return res.status(400).send("Invalid password")
 
-    res.send("logged in")
+    //create and assign a token
+    const token = jwt.sign({_id: user._id}, String(process.env.TOKEN_SECRET))
+    res.header('auth-token',token).send("logged in")
 
   }
 }

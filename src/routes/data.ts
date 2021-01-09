@@ -3,12 +3,13 @@ import fileupload from 'express-fileupload'
 
 import contentController from '../controllers/ContentController'
 import HdController from '../controllers/HdController'
+import auth from './verifyToken'
 
 const routes = Router()
 
 routes.use(fileupload())
 
-routes.get('/api', async (req,res) =>{
+routes.get('/api', auth ,async (req,res) =>{
   const item = req.query.item
   switch(item){
     case 'hd':
@@ -35,12 +36,12 @@ routes.get('/api', async (req,res) =>{
   }
 })
 
-routes.get('/api/content/:id', contentController.show)
-routes.get('/api/hd/:id', HdController.show)
+routes.get('/api/content/:id',auth , contentController.show)
+routes.get('/api/hd/:id',auth , HdController.show)
 
-routes.post('/api/hd',HdController.create)
-routes.post('/api/content',contentController.create)
-routes.post('/api/content/file',contentController.createByFile)
+routes.post('/api/hd',auth ,HdController.create)
+routes.post('/api/content',auth ,contentController.create)
+routes.post('/api/content/file',auth ,contentController.createByFile)
 
 routes.delete('/api', async(req,res) =>{
   const item = req.query.item

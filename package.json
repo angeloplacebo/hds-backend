@@ -5,13 +5,12 @@
   "license": "MIT",
   "dependencies": {
     "@hapi/joi": "^17.1.1",
-    "@types/bcryptjs": "^2.4.2",
-    "@types/hapi__joi": "^17.1.6",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-fileupload": "^1.2.0",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.11.8"
   },
   "scripts": {
@@ -20,6 +19,9 @@
     "start": "node dist/server.js"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.2",
+    "@types/hapi__joi": "^17.1.6",
+    "@types/jsonwebtoken": "^8.5.0",
     "@types/cors": "^2.8.9",
     "@types/express": "^4.17.9",
     "@types/express-fileupload": "^1.1.6",
