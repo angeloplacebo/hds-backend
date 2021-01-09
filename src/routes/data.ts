@@ -1,8 +1,8 @@
 import {Router} from 'express'
 import fileupload from 'express-fileupload'
 
-import contentController from './controllers/ContentController'
-import HdController from './controllers/HdController'
+import contentController from '../controllers/ContentController'
+import HdController from '../controllers/HdController'
 
 const routes = Router()
 
@@ -55,6 +55,5 @@ routes.delete('/api', async(req,res) =>{
       return res.status(404).send("error")
   }
 })
-
 
 export default routes    
