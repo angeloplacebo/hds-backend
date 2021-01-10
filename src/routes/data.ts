@@ -43,7 +43,7 @@ routes.post('/api/hd',auth ,HdController.create)
 routes.post('/api/content',auth ,contentController.create)
 routes.post('/api/content/file',auth ,contentController.createByFile)
 
-routes.delete('/api', async(req,res) =>{
+routes.delete('/api',auth, async(req,res) =>{
   const item = req.query.item
   switch(item){
     case 'hd': 
