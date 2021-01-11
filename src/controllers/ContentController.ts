@@ -37,7 +37,7 @@ const contentController = {
   },
 
   async createByFile(req: Request, res: Response) {
-    
+    console.log('createByFile')
     try{
       const files = req.files
       var content = []
@@ -51,6 +51,9 @@ const contentController = {
 
         let file = JSON.parse(filecontent)
         var json_file = file
+
+        let tag = json_file[0].Local
+        await Content.deleteMany({"Local": tag })
 
         var count = 0
         for(var i in json_file){
