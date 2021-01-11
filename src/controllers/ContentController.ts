@@ -37,7 +37,6 @@ const contentController = {
   },
 
   async createByFile(req: Request, res: Response) {
-    console.log('createByFile')
     try{
       const files = req.files
       var content = []
