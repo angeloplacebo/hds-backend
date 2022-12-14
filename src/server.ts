@@ -7,6 +7,8 @@ import * as dotenv from 'dotenv'
 import dataRoute from './routes/data'
 import authRoute from './routes/auth'
 
+import {Router} from 'express';
+
 dotenv.config()
 
 mongoose.set('useNewUrlParser', true);
@@ -30,7 +32,14 @@ app.use(express.json())
 // app.use(dataRoute)
 // app.use('/api/user', authRoute)
 
-app.use(`/.netlify/functions/api`, dataRoute )
-app.use(`/.netlify/functions/api/user`, authRoute )
+const router = Router()
+
+router.get('/test', (req,res)=>{
+  res.json({ 'hello': "test"})
+})
+
+app.use('/.netlify/functions/api', router)
+// app.use(`/.netlify/functions/api`, dataRoute )
+// app.use(`/.netlify/functions/api/user`, authRoute )
 
 app.listen(process.env.PORT || 3333, ()=> console.log('Server started at port:',process.env.PORT))
