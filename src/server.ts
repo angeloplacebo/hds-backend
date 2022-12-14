@@ -27,7 +27,10 @@ app.use(corsOpts)
 
 app.use(express.json())
 
-app.use(dataRoute)
-app.use('/api/user', authRoute)
+// app.use(dataRoute)
+// app.use('/api/user', authRoute)
+
+app.use(`/.netlify/functions/api`, dataRoute )
+app.use(`/.netlify/functions/api/user`, authRoute )
 
 app.listen(process.env.PORT || 3333, ()=> console.log('Server started at port:',process.env.PORT))
